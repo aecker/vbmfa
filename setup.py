@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 
 from setuptools import setup
-from pip.req import parse_requirements
 import os
 
 
@@ -15,9 +14,6 @@ def read(fname, split=False):
         lines = lines.splitlines()
     return lines
 
-def requirements(fname='requirements.txt'):
-    return [str(r.req) for r in parse_requirements(abspath(fname))]
-
 setup(name='vbmfa',
       version='0.0.1',
       description='Variational Bayesian Mixture of Factor Analysers',
@@ -27,7 +23,12 @@ setup(name='vbmfa',
       license='GNU GPLv3+',
       url='https://github.com/cangermueller/vbmfa',
       packages=['vbmfa'],
-      install_requires=requirements(),
+      install_requires=['numpy>=1.9.0',
+                        'scipy>=0.14.0',
+                        'scikit-learn>=0.15.2',
+                        'numpydoc>=0.5',
+                        'pytest>=2.6.1',
+                       ],
       classifiers=['Development Status :: 4 - Beta',
                    'Intended Audience :: Developers',
                    'Intended Audience :: Education',
